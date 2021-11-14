@@ -164,6 +164,38 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      console.log(this.$form)
+      const summaryQuantity = document.querySelector('#summaryQuantity');
+      const summaryCategories = document.querySelector('#summaryCategories');
+      const summaryInstitution = document.querySelector('#summaryInstitution');
+      const summaryStreet = document.querySelector('#summaryStreet');
+      const summaryZipCode = document.querySelector('#summaryZipCode');
+      const summaryCity = document.querySelector('#summaryCity');
+      const summaryPickUpDate = document.querySelector('#summaryPickUpDate');
+      const summaryPickUpTime = document.querySelector('#summaryPickUpTime');
+      const summaryPickUpComment = document.querySelector('#summaryPickUpComment');
+
+      const check = document.getElementById('check');
+      let arr = Array.from(document.getElementsByClassName("description"));
+      let catName = " ";
+      check.addEventListener('checkbox', function (e) {
+        arr.forEach(function (el) {
+          if (el.checked) {
+            catName = catName + el.innerText + "; ";
+          }
+        });
+      });
+
+     
+      summaryQuantity.innerHTML = this.$form.querySelector('input[name="quantity"]').value;
+      summaryCategories.innerHTML = catName;
+      summaryInstitution.innerHTML = this.$form.querySelector('input[name="institution"]').value;
+      summaryStreet.innerHTML = this.$form.querySelector('input[name="street"]').value;
+      summaryZipCode.innerHTML = this.$form.querySelector('input[name="zipCode"]').value;
+      summaryCity.innerHTML = this.$form.querySelector('input[name="city"]').value;
+      summaryPickUpDate.innerHTML = this.$form.querySelector('input[name="pickUpDate"]').value;
+      summaryPickUpTime.innerHTML = this.$form.querySelector('input[name="pickUpTime"]').value;
+      summaryPickUpComment.innerHTML = this.$form.querySelector('input[name="pickUpComment"]').value;
     }
 
   }
